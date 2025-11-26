@@ -20,9 +20,11 @@ jobs:
         run: sed -i 's/\\documentclass\[[a-z]*\]{resume}/\\documentclass[${{ matrix.style }}]{resume}/' main.tex
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
+          extra_system_packages: inkscape
+          latexmk_shell_escape: true
 
       - name: Rename PDF
         run: mv main.pdf resume-${{ matrix.style }}.pdf
