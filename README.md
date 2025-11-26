@@ -2,7 +2,24 @@ This repository provides a LaTeX résumé template inspired by the [Harvard Bull
 
 ## Overview
 
-![Preview of the template](https://raw.githubusercontent.com/WilliamOdinson/SimpleCV/main/preview.png)
+<table border="1" cellspacing="0" cellpadding="10" style="width: 100%; text-align: center;">
+  <tr>
+    <td style="width: 50%;">
+      <img src="https://raw.githubusercontent.com/WilliamOdinson/SimpleCV/main/assets/Harvard.png"
+           alt="Preview of the template"
+           style="width: 295px; height: 386px; object-fit: contain;">
+    </td>
+    <td style="width: 50%;">
+      <img src="https://raw.githubusercontent.com/WilliamOdinson/SimpleCV/main/assets/Default.png"
+           alt="Default preview"
+           style="width: 295px; height: 386px; object-fit: contain;">
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>Harvard</strong></td>
+    <td style="text-align: center;">Default</td>
+  </tr>
+</table>
 
 - **main.tex**
   The primary file where sections such as *Education*, *Experience*, *Leadership & Activities*, and *Notable GitHub Projects* are orchestrated.
