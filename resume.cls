@@ -27,16 +27,18 @@
 \RequirePackage{fontawesome5}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{forarray}
+\RequirePackage[margin=1in,left=0.3in,right=0.3in,top=0.2in,bottom=0.2in]{geometry}
 \RequirePackage{hyperref}
 \RequirePackage{latexsym}
 \RequirePackage{lipsum}
 \RequirePackage{marvosym}
 \RequirePackage{multicol}
+\RequirePackage{svg}
 \RequirePackage{tabularx}
 \RequirePackage{titlesec}
 \RequirePackage{verbatim}
 \RequirePackage{xcolor}
-
+\RequirePackage{graphicx}
 %-------------------------------------
 % Font Options
 %-------------------------------------
@@ -48,11 +50,11 @@
 
 % serif
 % \usepackage{CormorantGaramond}
-% \usepackage{charter}
+\usepackage{charter}
+% \usepackage{mathptmx}
 
-% Times New Roman
-\usepackage{mathptmx}
-
+% \usepackage[scaled]{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
 %-------------------------------------
 % Hyperlink Global Setup
 %-------------------------------------
@@ -70,11 +72,11 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-.7in}
-\addtolength{\textheight}{1.4in}
+% \addtolength{\oddsidemargin}{-0.6in}
+% \addtolength{\evensidemargin}{-0.5in}
+% \addtolength{\textwidth}{1.19in}
+% \addtolength{\topmargin}{-.7in}
+% \addtolength{\textheight}{1.4in}
 
 \setlength{\tabcolsep}{0in}
 \setlength{\multicolsep}{-3.0pt}
@@ -114,7 +116,7 @@
   \vspace{-2pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & {\small #2} \\
-      {\small#3} & {\small #4} \\ 
+      {\small#3} & {\small #4} \\
       {\small#5}
     \end{tabular*}\vspace{-7pt}
 }
@@ -154,11 +156,17 @@
 \newcommand{\titlesection}{
 \begingroup
 \begin{center}
-    {\Huge \scshape \firstname\ \lastname}\\
+    {\Huge \firstname\
+    \ifdefined\preferredname
+    {(\preferredname)}
+    \fi
+    \lastname
+    }\\
+    \vspace{2pt}
     \ifdefined\position
         {\small\textit{Applying For: \position}}\\
     \fi
-    \vspace{6pt}
+    \vspace{2pt}
     \small
     \raisebox{-0.1\height}\faPhone\ \phone ~
     \href{mailto:\email}{\raisebox{-0.1\height}\faEnvelope\ \email}
@@ -232,10 +240,33 @@
   \csname #1@#2\endcsname
 }
 
-\newcommand{\link}[2]{\href{#1}{\textcolor{blue}{[#2]}}}
+% \newcommand{\link}[2]{\href{#1}{\textcolor[RGB]{102, 112, 184}{\underline{~#2}}}}
 
-\newcommand{\updated}[1]{
-  \fancyfoot[R]{\makebox[0pt][l]{\textcolor{gray}{\textit{\scriptsize Last updated: #1}}}}
+\newcommand{\coloredlink}[2]{%
+  \href{#1}{%
+    \textcolor[RGB]{24, 14, 164}{%
+      \underline{#2~%
+      {\includesvg[height=0.7em,inkscapelatex=false]{assets/link-blue}}}%
+    }%
+  }%
+}
+
+\newcommand{\link}[2]{%
+  \href{#1}{%
+    \textcolor[RGB]{0, 0, 0}{%
+      \underline{#2%
+      ~{\includesvg[height=0.7em,inkscapelatex=false]{assets/link-black}}
+      }%
+    }%
+  }%
+}
+
+\newcommand{\updated}[1]{%
+  \fancyfoot{}
+  \fancyfoot[R]{
+    \hspace*{-0.1cm}
+    \raisebox{0.1cm}{\textcolor{gray}{\scriptsize\itshape Last updated: #1}}
+  }
 }
 
 %-------------------------------------
